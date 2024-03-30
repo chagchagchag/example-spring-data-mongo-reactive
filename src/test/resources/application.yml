@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: mongodb_reactive_example
+  data:
+    mongodb:
+      uri: mongodb+srv://[계정명]:[패스워드]@[몽고 DB 서버 주소]/
