@@ -89,6 +89,48 @@ public class BookDocumentFindTest {
         deleted.getName(), deleted.getPrice(), deleted.getSaleStatus()
     );
   }
-  
+
+  @DisplayName("QUERY_ANNOTATION__SALE_STATUS_가_FOR_SALE_인_책들을_조회")
+  @Test
+  public void TEST_QUERY_ANNOTATION__SALE_STATUS_가_FOR_SALE_인_책들을_조회(){
+    // given
+
+    // when
+    List<BookDocument> forSaleBooks = bookDocumentRepository
+        .findBySaleStatus(SaleStatus.FOR_SALE)
+        .toStream()
+        .collect(Collectors.toList());
+
+    // then
+    forSaleBooks.forEach(bookDocument -> {
+      log.info("book.name = {}, book.price = {}, book.saleStatus = {}",
+          bookDocument.getName(),
+          bookDocument.getPrice(),
+          bookDocument.getSaleStatus());
+    });
+  }
+
+  @DisplayName("QUERY_ANNOTATION__SALE_STATUS_가_FOR_SALE_인_책들의_이름을_글루코스_혁명_이라는_제목으로_업데이트")
+  @Test
+  public void TEST_QUERY_ANNOTATION__SALE_STATUS_가_FOR_SALE_인_책들의_이름을_글루코스_혁명_이라는_제목으로_업데이트(){
+    // given
+
+    // when
+    Long updatedBooks = bookDocumentRepository
+        .updateBookNameBySaleStatus(SaleStatus.FOR_SALE, "글루코스 혁명")
+        .block();
+
+    List<BookDocument> forSaleBooks = bookDocumentRepository
+        .findBySaleStatus(SaleStatus.FOR_SALE)
+        .toStream()
+        .collect(Collectors.toList());
+
+    // then
+    log.info("updatedBook count = {}", updatedBooks);
+
+    forSaleBooks.forEach(bookDocument -> {
+      log.info("book.name = {}, book.saleStatus = {}", bookDocument.getName(), bookDocument.getSaleStatus());
+    });
+  }
 
 }

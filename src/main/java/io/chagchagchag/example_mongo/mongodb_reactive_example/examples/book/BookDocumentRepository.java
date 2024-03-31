@@ -24,7 +24,10 @@ public interface BookDocumentRepository extends ReactiveSortingRepository<BookDo
   @Query("{'name': ?0}")
   Flux<BookDocument> findAllByName(String name);
 
-  @Query("{_id:  $0}")
-  @Update(value = "{$set:  {name: ?1}}")
-  Mono<Integer> updateNameById(String id, String name);
+  @Query("{saleStatus: ?0}")
+  Flux<BookDocument> findBySaleStatus(SaleStatus saleStatus);
+
+  @Query("{saleStatus: ?0}")
+  @Update(value = "{$set : {name: ?1}}")
+  Mono<Long> updateBookNameBySaleStatus(SaleStatus saleStatus, String toBeChanged);
 }
