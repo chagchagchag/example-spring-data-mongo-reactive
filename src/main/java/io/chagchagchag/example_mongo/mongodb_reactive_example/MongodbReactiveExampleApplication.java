@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRep
 		basePackages = {
 				"io.chagchagchag.example_mongo.mongodb_reactive_example.examples.book",
 		},
-		reactiveMongoTemplateRef = "bookReactiveMongoTemplate"
+		reactiveMongoTemplateRef = "helloworldReactiveMongoTemplate"
 )
 @SpringBootApplication
 public class MongodbReactiveExampleApplication {

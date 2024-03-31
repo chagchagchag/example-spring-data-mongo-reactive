@@ -29,8 +29,8 @@ public class MongoReactiveConfiguration {
     return new ReactiveMongoTransactionManager(dbFactory);
   }
 
-  @Bean(name = "bookReactiveMongoDatabaseFactory")
-  public SimpleReactiveMongoDatabaseFactory bookReactiveMongoDatabaseFactory(
+  @Bean(name = "helloworldReactiveMongoDatabaseFactory")
+  public SimpleReactiveMongoDatabaseFactory helloworldReactiveMongoDatabaseFactory(
       MongoProperties mongoProperties,
       MongoClient mongoClient
   ){
@@ -40,11 +40,11 @@ public class MongoReactiveConfiguration {
     return new SimpleReactiveMongoDatabaseFactory(mongoClient, database);
   }
 
-  @Bean(name = "bookReactiveMongoTemplate")
-  public ReactiveMongoTemplate bookReactiveMongoTemplate(
-      ReactiveMongoDatabaseFactory bookReactiveMongoDatabaseFactory,
+  @Bean(name = "helloworldReactiveMongoTemplate")
+  public ReactiveMongoTemplate helloworldReactiveMongoTemplate(
+      ReactiveMongoDatabaseFactory helloworldReactiveMongoDatabaseFactory,
       MongoConverter mongoConverter
   ){
-    return new ReactiveMongoTemplate(bookReactiveMongoDatabaseFactory, mongoConverter);
+    return new ReactiveMongoTemplate(helloworldReactiveMongoDatabaseFactory, mongoConverter);
   }
 }
