@@ -20,11 +20,4 @@ public interface BookDocumentRepository extends ReactiveSortingRepository<BookDo
 
   @Query("{'name': ?0}")
   Flux<BookDocument> findAllByName(String name);
-
-  @Aggregation(pipeline = {
-      "{ $match: {name: ?0} }",
-      "{ $group: {_id:  '$name', count:  {$sum:  1}}}"
-  })
-  Mono<BookCountAggregate> aggregateGroupByName(String name);
-
 }

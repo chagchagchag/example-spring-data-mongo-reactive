@@ -2,6 +2,10 @@ package io.chagchagchag.example_mongo.mongodb_reactive_example.examples.config;
 
 import com.mongodb.reactivestreams.client.MongoClient;
 import com.mongodb.reactivestreams.client.MongoClients;
+import java.math.BigDecimal;
+import java.util.Arrays;
+import org.bson.json.StrictJsonWriter;
+import org.bson.types.Decimal128;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.mongo.MongoProperties;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +15,7 @@ import org.springframework.data.mongodb.ReactiveMongoTransactionManager;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.data.mongodb.core.SimpleReactiveMongoDatabaseFactory;
 import org.springframework.data.mongodb.core.convert.MongoConverter;
+import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
 
 @Configuration
 public class MongoReactiveConfiguration {
@@ -47,4 +52,15 @@ public class MongoReactiveConfiguration {
   ){
     return new ReactiveMongoTemplate(helloworldReactiveMongoDatabaseFactory, mongoConverter);
   }
+
+  @Bean
+  public MongoCustomConversions mongoCustomConversions(){
+    return new MongoCustomConversions(
+        Arrays.asList(
+            new BigDecimalToDecimal128Converter(),
+            new Decimal128ToBigDecimalConverter()
+        )
+    );
+  }
+
 }
