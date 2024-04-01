@@ -33,4 +33,34 @@ public class BookDocumentTransactionalTest {
         .collect(Collectors.toList());
     log.info("after save, result = {}", result);
   }
+  
+  @DisplayName("새로운_책을_트랜잭셔널_메서드를_이용해서_저장_및_수정")
+  @Test
+  public void TEST_새로운_책을_트랜잭셔널_메서드를_이용해서_저장_및_수정(){
+    // given
+    
+    // when
+    
+    // then
+    log.info("before save");
+    List<BookDocument> result = sut.insertNewBookTransactional("맛도리 여행", BigDecimal.valueOf(3000))
+        .toStream()
+        .collect(Collectors.toList());
+    log.info("after save, result = {}", result);
+  }
+
+  @DisplayName("새로운_책을_execute_메서드를_이용해서_저장_및_수정")
+  @Test
+  public void TEST_새로운_책을_execute_메서드를_이용해서_저장_및_수정(){
+    // given
+
+    // when
+
+    // then
+    log.info("before save");
+    List<BookDocument> result = sut.insertNewBookExecute("맛도리 여행", BigDecimal.valueOf(3000))
+        .toStream()
+        .collect(Collectors.toList());
+    log.info("after save, result = {}", result);
+  }
 }
