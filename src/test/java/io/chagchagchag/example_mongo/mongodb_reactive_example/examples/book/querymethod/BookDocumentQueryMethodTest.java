@@ -1,4 +1,4 @@
-package io.chagchagchag.example_mongo.mongodb_reactive_example.examples.book.find;
+package io.chagchagchag.example_mongo.mongodb_reactive_example.examples.book.querymethod;
 
 import io.chagchagchag.example_mongo.mongodb_reactive_example.examples.book.BookDocument;
 import io.chagchagchag.example_mongo.mongodb_reactive_example.examples.book.BookDocumentRepository;
@@ -13,12 +13,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 @SpringBootTest
-public class BookDocumentFindTest {
-  private final Logger log = LoggerFactory.getLogger(BookDocumentFindTest.class);
+public class BookDocumentQueryMethodTest {
+  private final Logger log = LoggerFactory.getLogger(BookDocumentQueryMethodTest.class);
 
   @Autowired
   private BookDocumentRepository bookDocumentRepository;

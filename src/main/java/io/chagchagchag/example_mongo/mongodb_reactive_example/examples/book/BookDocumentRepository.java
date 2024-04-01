@@ -2,8 +2,6 @@ package io.chagchagchag.example_mongo.mongodb_reactive_example.examples.book;
 
 import java.math.BigDecimal;
 import org.bson.types.ObjectId;
-import org.reactivestreams.Publisher;
-import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.mongodb.repository.Update;
 import org.springframework.data.repository.reactive.ReactiveSortingRepository;
@@ -11,8 +9,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface BookDocumentRepository extends ReactiveSortingRepository<BookDocument, ObjectId> {
-  Flux<BookDocument> findAllByName(Publisher<String> name);
-
   Flux<BookDocument> deleteBySaleStatusAndPriceGreaterThan(SaleStatus saleStatus, BigDecimal price);
 
   Mono<BookDocument> deleteBySaleStatus(SaleStatus saleStatus);
